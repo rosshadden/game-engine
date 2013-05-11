@@ -15,8 +15,9 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('shhhh, it is a secret!'));
 app.use(express.session());
 app.use(app.router);
-	app.use(require('stylus').middleware(__dirname + '/public'));
+app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/engine', express.static(__dirname + '/engine/client'));
 
 app.get('/', routes.index);
 app.get('/users', user.list);

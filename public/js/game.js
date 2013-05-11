@@ -1,5 +1,5 @@
 define([
-	'lib/keyboard'
+	'engine/lib/keyboard'
 ], function(keyboard){
 	var dimensions = {
 		width: 1920,
