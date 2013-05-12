@@ -1,6 +1,8 @@
 define([
-	'engine/lib/keyboard'
-], function(keyboard){
+	'engine'
+], function(engine){
+	var keyboard = engine.lib.keyboard;
+
 	var dimensions = {
 		width: 1920,
 		height: 1080

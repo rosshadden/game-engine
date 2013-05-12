@@ -3,17 +3,19 @@
 //	and it is very useful inside the engine.
 require.config({
 	paths:	{
-		'engine':	'/engine',
 		'text': 'lib/require.text'
 	},
 
-	deps: ['engine/utilities/log', 'engine/lib/three', 'engine/lib/jquery'],
+	packages: [{
+		name: 'engine',
+		location: '/engine',
+		main: 'index'
+	}],
 
-	callback: function(log){
-		window.log = log;
+	deps: ['engine/utilities/log']
+});
 
-		require(['game'], function(game){
-			game();
-		});
-	}
+require(['engine/utilities/log', 'game'], function(log, game){
+	window.log = log;
+	game();
 });
