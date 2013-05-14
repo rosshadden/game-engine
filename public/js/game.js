@@ -14,14 +14,6 @@ define([
 		height: window.innerHeight
 	};
 
-	var mouse = {
-		position: {
-			x: 0,
-			y: 0
-		},
-		cache: {}
-	};
-
 	var scene, camera, projector, renderer;
 	var game = (function(){
 		var game = {};
