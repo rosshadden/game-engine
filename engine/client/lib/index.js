@@ -1,9 +1,6 @@
 define([
-	'./jquery',
-	'./keyboard',
-	'./three'
-], function(jquery, keyboard, three){
-	return {
-		keyboard: keyboard
-	};
+	'./three',
+	'./jquery'
+], function(_three, _jquery){
+	return {};
 });

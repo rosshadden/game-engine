@@ -1,6 +1,7 @@
 define([
 	'engine'
 ], function(engine){
+	window.engine = engine;
 	var keyboard = engine.lib.keyboard;
 
 	var dimensions = {
@@ -131,25 +132,25 @@ define([
 	var update = function(){
 		var modifier = 1;
 
-		if(keyboard.combo.active('shift')){
+		if(engine.input.while('shift')){
 			modifier = 10;
 		}
-		if(keyboard.combo.active('a')){
+		if(engine.input.while('a')){
 			camera.position.x -= modifier;
 		}
-		if(keyboard.combo.active('d')){
+		if(engine.input.while('d')){
 			camera.position.x += modifier;
 		}
-		if(keyboard.combo.active('w')){
+		if(engine.input.while('w')){
 			camera.position.y += modifier;
 		}
-		if(keyboard.combo.active('s')){
+		if(engine.input.while('s')){
 			camera.position.y -= modifier;
 		}
-		if(keyboard.combo.active('q')){
+		if(engine.input.while('q')){
 			camera.lookAt({});
 		}
-		if(keyboard.combo.active('e')){
+		if(engine.input.while('e')){
 			// camera.lookAt(scene.position);
 			camera.lookAt({
 				x: mouse.position.x - mouse.cache.x,

@@ -16,6 +16,7 @@ define([
 	// camera(engine);
 	// events(engine);
 	// input(engine);
+	engine.input = input;
 	// math(engine);
 	// network(engine);
 	engine.utilities = utilities;
