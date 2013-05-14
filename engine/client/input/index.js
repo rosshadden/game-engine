@@ -10,7 +10,7 @@ define([
 				var matches = event.match(adapter.relevance);
 
 				if(matches && ('on' in adapter.handlers)){
-					adapter.handlers.on(matches[0], callback);
+					adapter.handlers.on(matches[1], callback);
 				}
 			});
 		},
@@ -37,8 +37,8 @@ define([
 		}
 	};
 
-	input.mouse = mouse(input);
-	input.keyboard = keyboard(input);
+	mouse(input);
+	keyboard(input);
 
 	return input;
 });
