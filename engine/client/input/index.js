@@ -13,6 +13,7 @@ define([
 					adapter.handlers.on(matches[1], callback);
 				}
 			});
+			return input;
 		},
 
 		while: function(event, callback){
@@ -27,13 +28,16 @@ define([
 			return response;
 		},
 
-		trigger: function(){},
+		trigger: function(){
+			return input;
+		},
 
 		register: function(relevance, handlers){
 			adapters.push({
 				relevance: relevance,
 				handlers: handlers
 			});
+			return input;
 		}
 	};
 
