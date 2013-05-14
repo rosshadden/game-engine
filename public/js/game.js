@@ -78,47 +78,47 @@ define([
 	//	EVENTS.
 	(function(){
 		game.$canvas
-		.on('mousedown', function(event){
-			event.preventDefault();
+			.on('mousedown', function(event){
+				event.preventDefault();
 
-			var x = event.offsetX,
-				y = event.offsetY;
-
-			if(event.which === 1){
-				game.$canvas.css('cursor', 'crosshair');
-			}else if(event.which === 2){
-				game.$canvas.css('cursor', 'all-scroll');
-			}else if(event.which === 3){
-				game.$canvas
-				.css('cursor', 'move')
-				.on('mousemove.drag', function(event){
-					camera.position.x += (x - event.offsetX) / 2;
-					camera.position.y -= (y - event.offsetY) / 2;
-					x = event.offsetX;
+				var x = event.offsetX,
 					y = event.offsetY;
-				});
-			}
-		})
-		.on('mouseup', function(event){
-			game.$canvas
-			.css('cursor', 'auto')
-			.unbind('mousemove.drag');
-		})
-		.on('mousewheel', function(event){
-			var Δ = event.originalEvent.wheelDeltaY;
 
-			var position = camera.position.z - Δ / 2;
-			if(1e2 < position && position < 1e3){
-				camera.position.z = position;
-			}
-		})
-		.on('mousemove', function(event){
-			mouse.position.x = event.clientX;
-			mouse.position.y = event.clientY;
-		})
-		.on('contextmenu', function(event){
-			event.preventDefault();
-		});
+				if(event.which === 1){
+					game.$canvas.css('cursor', 'crosshair');
+				}else if(event.which === 2){
+					game.$canvas.css('cursor', 'all-scroll');
+				}else if(event.which === 3){
+					game.$canvas
+					.css('cursor', 'move')
+					.on('mousemove.drag', function(event){
+						camera.position.x += (x - event.offsetX) / 2;
+						camera.position.y -= (y - event.offsetY) / 2;
+						x = event.offsetX;
+						y = event.offsetY;
+					});
+				}
+			})
+			.on('mouseup', function(event){
+				game.$canvas
+				.css('cursor', 'auto')
+				.unbind('mousemove.drag');
+			})
+			.on('mousewheel', function(event){
+				var Δ = event.originalEvent.wheelDeltaY;
+
+				var position = camera.position.z - Δ / 2;
+				if(1e2 < position && position < 1e3){
+					camera.position.z = position;
+				}
+			})
+			.on('mousemove', function(event){
+				mouse.position.x = event.clientX;
+				mouse.position.y = event.clientY;
+			})
+			.on('contextmenu', function(event){
+				event.preventDefault();
+			});
 
 		$(window).on('resize', function(){
 			viewport.width = window.innerWidth;
