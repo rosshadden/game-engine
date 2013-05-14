@@ -14,6 +14,7 @@ define([
 		height: window.innerHeight
 	};
 
+	var player;
 	var scene, camera, projector, renderer;
 	var game = (function(){
 		var game = {};
@@ -36,7 +37,6 @@ define([
 			document.body.appendChild(renderer.domElement);
 			this.$canvas = $(renderer.domElement);
 
-
 			var ground = new THREE.Mesh(
 				new THREE.PlaneGeometry(dimensions.width, dimensions.height, 1, 1),
 				new THREE.MeshBasicMaterial({
@@ -44,7 +44,21 @@ define([
 				})
 			);
 
+			player = new THREE.Mesh(
+				new THREE.CubeGeometry(100, 100, 200, 1, 1, 1),
+				new THREE.MeshFaceMaterial([
+					new THREE.MeshBasicMaterial({ color: 0x663399 }),
+					new THREE.MeshBasicMaterial({ color: 0x663399 }),
+					new THREE.MeshBasicMaterial({ color: 0x663399 }),
+					new THREE.MeshBasicMaterial({ color: 0x663399 }),
+					new THREE.MeshBasicMaterial({ color: 0x23328D }),
+					new THREE.MeshBasicMaterial({ color: 0x000000 })
+				])
+			);
+			player.position.set(0, 0, 0);
+
 			scene.add(ground);
+			scene.add(player);
 		};
 
 		return game;
@@ -76,7 +90,12 @@ define([
 		});
 	})();
 
+	console.log(player);
+
 	var update = function(){
+		engine.input.is('w', function(){
+			player.position.setY(-10);
+		});
 	};
 
 	return function render(){
