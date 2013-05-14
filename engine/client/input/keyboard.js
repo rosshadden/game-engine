@@ -5,7 +5,7 @@ define(['../lib/keyboard'], function(keyboard){
 				keyboard.on(keys, callback);
 			},
 
-			while: function(keys){
+			is: function(keys){
 				return keyboard.combo.active(keys);
 			}
 		});

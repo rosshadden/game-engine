@@ -16,13 +16,13 @@ define([
 			return input;
 		},
 
-		while: function(event, callback){
+		is: function(event, callback){
 			var response = false;
 			adapters.forEach(function(adapter){
 				var matches = event.match(adapter.relevance);
 
-				if(matches && ('while' in adapter.handlers)){
-					response = adapter.handlers.while.apply(null, matches);
+				if(matches && ('is' in adapter.handlers)){
+					response = adapter.handlers.is.apply(null, matches);
 				}
 			});
 			return response;

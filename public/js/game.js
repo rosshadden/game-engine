@@ -132,25 +132,25 @@ define([
 	var update = function(){
 		var modifier = 1;
 
-		if(engine.input.while('shift')){
+		if(engine.input.is('shift')){
 			modifier = 10;
 		}
-		if(engine.input.while('a')){
+		if(engine.input.is('a')){
 			camera.position.x -= modifier;
 		}
-		if(engine.input.while('d')){
+		if(engine.input.is('d')){
 			camera.position.x += modifier;
 		}
-		if(engine.input.while('w')){
+		if(engine.input.is('w')){
 			camera.position.y += modifier;
 		}
-		if(engine.input.while('s')){
+		if(engine.input.is('s')){
 			camera.position.y -= modifier;
 		}
-		if(engine.input.while('q')){
+		if(engine.input.is('q')){
 			camera.lookAt({});
 		}
-		if(engine.input.while('e')){
+		if(engine.input.is('e')){
 			// camera.lookAt(scene.position);
 			camera.lookAt({
 				x: mouse.position.x - mouse.cache.x,
