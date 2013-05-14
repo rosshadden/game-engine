@@ -10,7 +10,7 @@ define([
 				var matches = event.match(adapter.relevance);
 
 				if(matches && ('on' in adapter.handlers)){
-					adapter.handlers.on.apply(null, matches);
+					adapter.handlers.on(matches[0], callback);
 				}
 			});
 		},

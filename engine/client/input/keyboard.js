@@ -1,8 +1,8 @@
 define(['../lib/keyboard'], function(keyboard){
 	return function(input){
 		input.register(/^\w+(?:\s?[+,]\s?\w+)*$/, {
-			on: function(keys){
-				console.log('on', 'KEYS KEYS KEYS.', keys);
+			on: function(keys, callback){
+				keyboard.on(keys, callback);
 			},
 
 			while: function(keys){
