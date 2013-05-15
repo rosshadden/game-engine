@@ -2,7 +2,6 @@ define([
 	'engine'
 ], function(engine){
 	window.engine = engine;
-	var keyboard = engine.lib.keyboard;
 
 	var dimensions = {
 		width: 1920,
@@ -31,7 +30,8 @@ define([
 
 			//	CAMERA.
 			camera = new THREE.PerspectiveCamera(75, viewport.width / viewport.height, 0.1, 20000);
-			camera.position.set(0, 0, 8e2);
+			camera.position.set(0, -200, 6e2);
+			camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 			projector = new THREE.Projector();
 
@@ -91,8 +91,9 @@ define([
 		});
 	})();
 
-	var speed = 2;
+	var speed = 4;
 	var update = function(){
+		//	Player.
 		if(engine.input.is('w')){
 			player.position.y += speed;
 			player.rotation.y = Math.PI;
@@ -108,6 +109,20 @@ define([
 		if(engine.input.is('d')){
 			player.position.x += speed;
 			player.rotation.y = Math.PI / 2;
+		}
+
+		//	Camera.
+		if(engine.input.is('up')){
+			camera.position.y += speed;
+		}
+		if(engine.input.is('left')){
+			camera.position.x -= speed;
+		}
+		if(engine.input.is('down')){
+			camera.position.y -= speed;
+		}
+		if(engine.input.is('right')){
+			camera.position.x += speed;
 		}
 	};
 
