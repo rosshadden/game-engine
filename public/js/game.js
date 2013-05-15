@@ -44,14 +44,14 @@ define([
 				})
 			);
 
-			var loader = new THREE.OBJLoader();
-			loader.addEventListener('load', function(event){
-				player = event.content;
-				player.position.y = -80;
-				scene.add(player);
+			var loader = new THREE.OBJMTLLoader();
+			loader.addEventListener('load', function(object){
+				player = object.content;
 				player.position.set(0, 0, 0);
+				player.rotation.x = Math.PI / 2;
+				scene.add(player);
 			});
-			loader.load('/models/link/Link Adult.obj');
+			loader.load('/models/link/Link Adult.obj', '/models/link/Link Adult.mtl');
 
 			scene.add(ground);
 		};
@@ -85,21 +85,23 @@ define([
 		});
 	})();
 
-	console.log(player);
-
 	var speed = 2;
 	var update = function(){
 		if(engine.input.is('w')){
 			player.position.y += speed;
+			player.rotation.y = Math.PI;
 		}
 		if(engine.input.is('a')){
 			player.position.x -= speed;
+			player.rotation.y = -Math.PI / 2;
 		}
 		if(engine.input.is('s')){
 			player.position.y -= speed;
+			player.rotation.y = 0;
 		}
 		if(engine.input.is('d')){
 			player.position.x += speed;
+			player.rotation.y = Math.PI / 2;
 		}
 	};
 
