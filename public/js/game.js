@@ -25,6 +25,10 @@ define([
 		game.init = function(){
 			scene = new THREE.Scene();
 
+			//	LIGHTS.
+			var light = new THREE.PointLight(0xffffff);
+			light.position.set(0, 0, 200);
+
 			//	CAMERA.
 			camera = new THREE.PerspectiveCamera(75, viewport.width / viewport.height, 0.1, 20000);
 			camera.position.set(0, 0, 8e2);
@@ -49,10 +53,12 @@ define([
 				player = object.content;
 				player.position.set(0, 0, 0);
 				player.rotation.x = Math.PI / 2;
+				player.scale.set(1e-2, 1e-2, 1e-2);
 				scene.add(player);
 			});
-			loader.load('/models/link/Link Adult.obj', '/models/link/Link Adult.mtl');
+			loader.load('/models/tidus-high/Tidus - HP.obj', '/models/tidus-high/Tidus - HP.mtl');
 
+			scene.add(light);
 			scene.add(ground);
 		};
 
