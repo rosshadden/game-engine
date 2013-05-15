@@ -45,7 +45,7 @@ define([
 			);
 
 			player = new THREE.Mesh(
-				new THREE.CubeGeometry(100, 100, 200, 1, 1, 1),
+				new THREE.CubeGeometry(32, 32, 128, 1, 1, 1),
 				new THREE.MeshFaceMaterial([
 					new THREE.MeshBasicMaterial({ color: 0x663399 }),
 					new THREE.MeshBasicMaterial({ color: 0x663399 }),
@@ -92,10 +92,20 @@ define([
 
 	console.log(player);
 
+	var speed = 2;
 	var update = function(){
-		engine.input.is('w', function(){
-			player.position.setY(-10);
-		});
+		if(engine.input.is('w')){
+			player.position.y += speed;
+		}
+		if(engine.input.is('a')){
+			player.position.x -= speed;
+		}
+		if(engine.input.is('s')){
+			player.position.y -= speed;
+		}
+		if(engine.input.is('d')){
+			player.position.x += speed;
+		}
 	};
 
 	return function render(){
