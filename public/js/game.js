@@ -44,21 +44,16 @@ define([
 				})
 			);
 
-			player = new THREE.Mesh(
-				new THREE.CubeGeometry(32, 32, 128, 1, 1, 1),
-				new THREE.MeshFaceMaterial([
-					new THREE.MeshBasicMaterial({ color: 0x663399 }),
-					new THREE.MeshBasicMaterial({ color: 0x663399 }),
-					new THREE.MeshBasicMaterial({ color: 0x663399 }),
-					new THREE.MeshBasicMaterial({ color: 0x663399 }),
-					new THREE.MeshBasicMaterial({ color: 0x23328D }),
-					new THREE.MeshBasicMaterial({ color: 0x000000 })
-				])
-			);
-			player.position.set(0, 0, 0);
+			var loader = new THREE.OBJLoader();
+			loader.addEventListener('load', function(event){
+				player = event.content;
+				player.position.y = -80;
+				scene.add(player);
+				player.position.set(0, 0, 0);
+			});
+			loader.load('/models/link/Link Adult.obj');
 
 			scene.add(ground);
-			scene.add(player);
 		};
 
 		return game;

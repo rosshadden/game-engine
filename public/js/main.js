@@ -10,12 +10,9 @@ require.config({
 		name: 'engine',
 		location: '/engine',
 		main: 'index'
-	}],
-
-	deps: ['engine/utilities/log']
+	}]
 });
 
-require(['engine/utilities/log', 'game'], function(log, game){
-	window.log = log;
+require(['game'], function(game){
 	game();
 });

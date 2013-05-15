@@ -1,6 +1,9 @@
 define([
-	'./three',
-	'./jquery'
-], function(_three, _jquery){
-	return {};
+	'./three/three',
+	'./jquery',
+	'./dependencies'
+], function(_three, _jquery, dependencies){
+	var lib = {};
+	dependencies(lib);
+	return lib;
 });
