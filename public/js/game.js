@@ -26,8 +26,8 @@ define([
 			scene = new THREE.Scene();
 
 			//	LIGHTS.
-			var light = new THREE.PointLight(0xffffff);
-			light.position.set(0, 0, 200);
+			var light = new THREE.DirectionalLight(0xebf3ff, 1.6);
+			light.position.set(0, 140, 500).multiplyScalar(1.1);
 
 			//	CAMERA.
 			camera = new THREE.PerspectiveCamera(75, viewport.width / viewport.height, 0.1, 20000);
